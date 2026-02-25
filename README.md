@@ -5,7 +5,7 @@ Description
 
 Dune : Arrakis Smuggler
 
-Jeu de gestion/survie basé sur l'univers de Dune, écrit par Franck Herbert.
+Jeu de gestion/survie basé sur l'univers du roman Dune, écrit par Franck Herbert.
 
 Prérequis
 ---------
@@ -24,7 +24,7 @@ git clone https://github.com/suFredericD/DAS.git
 
 Licence
 -------
-
-Licence à définir.
-
 2026
+
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
