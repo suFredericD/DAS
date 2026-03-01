@@ -7,6 +7,7 @@ public abstract class Character {
 
     protected String name;
     protected String lastName;
+    protected Faction faction;
     protected int level;
 
     protected int health;
@@ -32,11 +33,13 @@ public abstract class Character {
     // ===================================================== CONSTRUCTEUR
     // ==================================================================================
 
-    public Character(String name, String lastName, int level, int health, int maxHealth, int thirst, int maxThirst,
+    public Character(String name, String lastName, Faction faction, int level, int health, int maxHealth, int thirst,
+            int maxThirst,
             int purse, int strength, int endurance, int agility, int intelligence, int charisma, int luck,
             int stamina, int maxStamina) {
         this.name = name;
         this.lastName = lastName;
+        this.faction = faction;
         this.level = level;
 
         this.health = health;
@@ -84,6 +87,10 @@ public abstract class Character {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public Faction getFaction() {
+        return faction;
     }
 
     public int getLevel() {
@@ -137,6 +144,7 @@ public abstract class Character {
     public int getStamina() {
         return stamina;
     }
+
     public int getMaxStamina() {
         return maxStamina;
     }
@@ -155,6 +163,10 @@ public abstract class Character {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setFaction(Faction faction) {
+        this.faction = faction;
     }
 
     public void setLevel(int level) {
@@ -208,6 +220,7 @@ public abstract class Character {
     public void setStamina(int stamina) {
         this.stamina = stamina;
     }
+
     public void setMaxStamina(int maxStamina) {
         this.maxStamina = maxStamina;
     }
