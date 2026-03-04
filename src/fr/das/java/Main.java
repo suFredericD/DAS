@@ -1,10 +1,5 @@
 package fr.das.java;
 
-import javax.swing.*;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -14,14 +9,14 @@ public class Main {
                 List<Location> locations = generateLocations(factions);
 
                 // Génération du joueur
-                Player player = new Player("Ilric", "Haune", factions.get(3), 1, 100, 100, 100, 100, 1000, 20, 20, 20,
+                Player player = new Player("Ilric", "Haune", factions.get(3), 1, 100, 100, 100, 100, 100, 20, 20, 20,
                                 20, 20,
                                 10,
                                 100, 100);
 
                 House playerHouse = new House("Maison du joueur",
-                                "Ta maison personnelle, un refuge sûr et un symbole de ton statut sur Arrakis.", player,
-                                locations.get(1));
+                                "Ta maison personnelle, un refuge sûr et un symbole de ton statut sur Arrakis.",
+                                locations.get(1), player, 1000);
 
                 // Attribution des éléments du jeu
                 player.setHome(playerHouse);
@@ -33,14 +28,24 @@ public class Main {
                 System.out.println(ConsoleColors.YELLOW + "====================================================");
                 System.out.println("DUNE : ARRAKIS SMUGGLER");
                 System.out.println("====================================================" + ConsoleColors.RESET);
-                new ScreenWelcome(player);
+                System.out.println("Elements creation status\n- - - - - - - - - - - - - -\n"
+                                + ConsoleColors.YELLOW + "Factions generated    : "
+                                + ConsoleColors.RESET + factions.size() + "\n"
+                                + ConsoleColors.YELLOW + "Locations generated   : "
+                                + ConsoleColors.RESET + locations.size() + "\n"
+                                + "- - - - - - - - - - - - - -" + ConsoleColors.RESET);
+                System.out.println("");
+
+                new ScreenWelcome(player, playerHouse);
 
                 // Retours en console
 
-                // Fin d'affichage console
-                System.out.println(
-                                ConsoleColors.YELLOW + "\n_____________________________________ fin d'éxécution\n"
-                                                + ConsoleColors.RESET);
+                // Fin d'affichage console : message de fermeture systématique
+                Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                        System.out.println(
+                                        ConsoleColors.YELLOW + "_____________________________________ fin d'éxécution\n"
+                                                        + ConsoleColors.RESET);
+                }));
         }
         // ==============================================================================
         // =================================================================== FONCTIONS
@@ -62,7 +67,6 @@ public class Main {
                                 "Les contrebandiers opérant sur Arrakis, spécialisés dans le commerce illégal d'épice et d'autres biens.",
                                 "Faction planétaire");
                 List<Faction> factions = List.of(atreides, harkonnen, fremen, smugglers); // crée une liste immuable
-
                 return factions;
         }
 

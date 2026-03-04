@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 
 public class ScreenWelcome extends JFrame {
 
-      public ScreenWelcome(Player player) {
+      public ScreenWelcome(Player player, House playerHouse) {
             String screenTitle = "Dune : Arrakis Smuggler - Welcome Screen";
             int frameWidth = 800;
             int frameHeight = 800;
@@ -52,9 +52,10 @@ public class ScreenWelcome extends JFrame {
             characterButton.setFocusPainted(false);
             characterButton.setOpaque(true);
             characterButton.addActionListener(e -> {
-                  new ScreenCharacter(player);
+                  new ScreenCharacter(player, playerHouse);
+                  dispose();
             });
-            
+
             JButton homeButton = new JButton("Domicile");
             homeButton.setFont(new Font("Papyrus", Font.BOLD, 16));
             homeButton.setBackground(new Color(148, 69, 16));
@@ -63,14 +64,21 @@ public class ScreenWelcome extends JFrame {
             homeButton.setFocusPainted(false);
             homeButton.setOpaque(true);
             homeButton.addActionListener(e -> {
-                  new ScreenHome(player);
+                  new ScreenHome(player, playerHouse);
+                  dispose();
             });
+
+            JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 20, 0));
+            buttonPanel.setBackground(new Color(0, 0, 0));
+            buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 120, 40, 120));
+            buttonPanel.add(characterButton);
+            buttonPanel.add(homeButton);
 
             JPanel welcomePanel = (JPanel) this.getContentPane();
             welcomePanel.setBackground(new Color(0, 0, 0));
             welcomePanel.add(headerPanel, BorderLayout.NORTH);
             welcomePanel.add(new JLabel(htmlWelcome, SwingConstants.CENTER), BorderLayout.CENTER);
-            welcomePanel.add(characterButton, BorderLayout.SOUTH);
+            welcomePanel.add(buttonPanel, BorderLayout.SOUTH);
 
             System.out.println(
                         ConsoleColors.YELLOW + "Screen loaded : " + ConsoleColors.RESET + "Welcome\n");
