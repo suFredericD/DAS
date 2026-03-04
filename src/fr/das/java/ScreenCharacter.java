@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class ScreenCharacter extends JFrame {
-        public ScreenCharacter(Player player) {
+        public ScreenCharacter(Player player, House playerHouse) {
                 String screenTitle = "Dune : Arrakis Smuggler - Personnage";
                 int frameWidth = 800;
-                int frameHeight = 800;
+                int frameHeight = 960;
                 setTitle(screenTitle);
                 setDefaultCloseOperation(EXIT_ON_CLOSE);
                 setResizable(false);
@@ -26,7 +26,7 @@ public class ScreenCharacter extends JFrame {
                 add(createNorthPanel(player), BorderLayout.NORTH);
                 add(createWestPanel(player), BorderLayout.WEST);
                 add(createEastPanel(player), BorderLayout.EAST);
-                add(createSouthPanel(player), BorderLayout.SOUTH);
+                add(createSouthPanel(player, playerHouse), BorderLayout.SOUTH);
                 add(createCenterPanel(player), BorderLayout.CENTER);
 
                 System.out.println(
@@ -48,19 +48,34 @@ public class ScreenCharacter extends JFrame {
                 return centerPanel;
         }
 
-        public JPanel createSouthPanel(Player player) {
+        public JPanel createSouthPanel(Player player, House playerHouse) {
                 JButton welcomeButton = new JButton("Accueil");
                 welcomeButton.setFont(new Font("Papyrus", Font.BOLD, 14));
                 welcomeButton.setBackground(new Color(148, 69, 16));
                 welcomeButton.setFocusPainted(false);
                 welcomeButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
                 welcomeButton.addActionListener(e -> {
-                        new ScreenWelcome(player);
+                        new ScreenWelcome(player, playerHouse);
+                        dispose();
+                });
+                JButton homeButton = new JButton("Domicile");
+                homeButton.setFont(new Font("Papyrus", Font.BOLD, 16));
+                homeButton.setBackground(new Color(148, 69, 16));
+                homeButton.setPreferredSize(new Dimension(0, 50));
+                homeButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+                homeButton.setFocusPainted(false);
+                homeButton.setOpaque(true);
+                homeButton.addActionListener(e -> {
+                        new ScreenHome(player, playerHouse);
+                        dispose();
                 });
 
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setBackground(new Color(0, 0, 0));
+                buttonPanel.setLayout(new GridLayout(1, 2, 20, 0));
+                buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
                 buttonPanel.add(welcomeButton);
+                buttonPanel.add(homeButton);
                 return buttonPanel;
         }
 
@@ -130,7 +145,7 @@ public class ScreenCharacter extends JFrame {
                                 + "<td style='color: #944510; font-family: Consolas; font-size: 12px; text-align: left; margin: 0; padding: 0;'>"
                                 + player.getLevel()
                                 + "</td></tr>"
-                                + "<tr><td style='color: #9ea813; font-family: Papyrus; font-size: 10px; text-align: center; margin: 0; padding: 10px;'>Solaris : </td>"
+                                + "<tr><td style='color: #9ea813; font-family: Papyrus; font-size: 10px; text-align: center; margin: 0; padding: 10px;'>Solari : </td>"
                                 + "<td style='color: #944510; font-family: Consolas; font-size: 12px; text-align: left; margin: 0; padding: 0;'>"
                                 + player.getPurse()
                                 + "</td></tr></table></html>";
@@ -144,10 +159,14 @@ public class ScreenCharacter extends JFrame {
 
                 String htmlThirstLabel = "<html><table style='margin: 0; padding: 5px; border-color: #944510; border-width: 1px; border-style: solid;'>"
                                 +
-                                "<tr><td style='color: #1977b6; font-family: Papyrus; font-size: 12px; text-align: center; margin: 0; padding: 5px; '>Soif</td></tr><tr>"
+                                "<tr><td style='color: #1977b6; font-family: Papyrus; font-size: 12px; text-align: center; margin: 0; padding: 5px; '>Soif</td>"
                                 +
-                                "<td style='color: #944510; font-family: Consolas; font-size: 12px; text-align: center; margin: 0; padding: 5px; '>"
+                                "<td style='color: #944510; font-family: Consolas; font-size: 12px; text-align: right; margin: 0; padding: 5px; '>"
                                 + player.getThirst() + " / " + player.getMaxThirst()
+                                + "</td></tr>"
+                                + "<tr><td style='color: #1977b6; font-family: Papyrus; font-size: 11px; text-align: center; margin: 0; padding: 10px;'>Gourde</td>"
+                                + "<td style='color: #944510; font-family: Consolas; font-size: 12px; text-align: right; margin: 0; padding: 0;'>"
+                                + player.getJolitreFill() + " ml</td></tr>"
                                 + "</td></tr></table></html>";
                 String htmlStaminaLabel = "<html><table style='margin: 0; padding: 5px; border-color: #944510; border-width: 1px; border-style: solid;'>"
                                 +
