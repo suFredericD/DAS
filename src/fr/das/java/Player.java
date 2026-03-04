@@ -5,6 +5,7 @@ import java.time.*;
 
 public class Player extends Character {
 
+        protected int gameHour;
         protected LocalDateTime birthDate;
         protected House home;
 
@@ -21,6 +22,7 @@ public class Player extends Character {
 
                 // Génération de la date de naissance du joueur
                 this.birthDate = LocalDateTime.now();
+                this.gameHour = 6;
         }
 
         // =====================================================================================
@@ -33,7 +35,6 @@ public class Player extends Character {
                                 + "," + this.intelligence + "," + this.charisma + "," + this.luck + ","
                                 + this.stamina
                                 + "," + this.maxStamina;
-
                 try {
                         Files.write(Paths.get("savegame.txt"), playerData.getBytes());
                         System.out.println(ConsoleColors.GREEN
@@ -50,19 +51,27 @@ public class Player extends Character {
         // =================================================================== GETTERS &
         // SETTERS
         // =====================================================================================
-        public House getHome() {
-                return home;
+        public int getGameHour() {
+                return gameHour;
         }
 
         public LocalDateTime getBirthDate() {
                 return birthDate;
         }
 
-        public void setHome(House home) {
-                this.home = home;
+        public House getHome() {
+                return home;
+        }
+
+        public void setGameHour(int gameHour) {
+                this.gameHour = gameHour;
         }
 
         public void setBirthDate(LocalDateTime birthDate) {
                 this.birthDate = birthDate;
+        }
+
+        public void setHome(House home) {
+                this.home = home;
         }
 }
