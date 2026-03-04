@@ -1,14 +1,12 @@
 package fr.das.java;
 
 public abstract class Character {
-    // ==============================================================================
-    // =================================================================== ATTRIBUTS
-    // ==============================================================================
 
     protected String name;
     protected String lastName;
     protected Faction faction;
     protected int level;
+    protected int experience;
 
     protected int health;
     protected int maxHealth;
@@ -18,6 +16,8 @@ public abstract class Character {
     protected int maxStamina;
 
     protected int purse;
+    protected int jolitre;
+    protected int jolitreFill;
 
     protected int strength;
     protected int endurance;
@@ -41,15 +41,18 @@ public abstract class Character {
         this.lastName = lastName;
         this.faction = faction;
         this.level = level;
+        this.experience = 10;
 
         this.health = health;
         this.maxHealth = maxHealth;
         this.thirst = thirst;
         this.maxThirst = maxThirst;
-
-        this.purse = purse;
         this.stamina = stamina;
         this.maxStamina = maxStamina;
+
+        this.purse = purse;
+        this.jolitre = 1000;
+        this.jolitreFill = 1000;
 
         this.strength = strength;
         this.endurance = endurance;
@@ -115,6 +118,14 @@ public abstract class Character {
 
     public int getPurse() {
         return purse;
+    }
+
+    public int getJolitre() {
+        return jolitre;
+    }
+
+    public int getJolitreFill() {
+        return jolitreFill;
     }
 
     public int getStrength() {
@@ -191,6 +202,14 @@ public abstract class Character {
 
     public void setPurse(int purse) {
         this.purse = purse;
+    }
+
+    public void setJolitre(int jolitre) {
+        this.jolitre = jolitre;
+    }
+
+    public void setJolitreFill(int jolitreFill) {
+        this.jolitreFill = jolitreFill;
     }
 
     public void setStrength(int strength) {

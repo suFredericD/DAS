@@ -3,6 +3,8 @@ package fr.das.java;
 import java.nio.file.*;
 
 public class Player extends Character {
+        protected House home;
+
         // ===================================================================
         // CONSTRUCTEUR
         // ==================================================================================
@@ -19,7 +21,23 @@ public class Player extends Character {
         // =================================================================== FUNCTIONS
         // =====================================================================================
         public void saveGame() {
+                String playerData = this.name + "," + this.lastName + "," + this.faction.getName() + "," + this.level
+                                + "," + this.health + "," + this.maxHealth + "," + this.thirst + "," + this.maxThirst
+                                + "," + this.purse + "," + this.strength + "," + this.endurance + "," + this.agility
+                                + "," + this.intelligence + "," + this.charisma + "," + this.luck + ","
+                                + this.stamina
+                                + "," + this.maxStamina;
 
+                try {
+                        Files.write(Paths.get("savegame.txt"), playerData.getBytes());
+                        System.out.println(ConsoleColors.GREEN
+                                        + "Partie sauvegardée avec succès ! (savegame.txt)"
+                                        + ConsoleColors.RESET);
+                } catch (Exception e) {
+                        System.out.println(ConsoleColors.RED
+                                        + "Erreur lors de la sauvegarde de la partie : " + e.getMessage()
+                                        + ConsoleColors.RESET);
+                }
         }
 
         public void displayStats() {
@@ -57,5 +75,11 @@ public class Player extends Character {
         // =================================================================== GETTERS &
         // SETTERS
         // =====================================================================================
+        public House getHome() {
+                return home;
+        }
 
+        public void setHome(House home) {
+                this.home = home;
+        }
 }
