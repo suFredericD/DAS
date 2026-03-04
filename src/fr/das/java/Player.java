@@ -33,10 +33,9 @@ public class Player extends Character {
                                 + "," + this.health + "," + this.maxHealth + "," + this.thirst + "," + this.maxThirst
                                 + "," + this.purse + "," + this.strength + "," + this.endurance + "," + this.agility
                                 + "," + this.intelligence + "," + this.charisma + "," + this.luck + ","
-                                + this.stamina
-                                + "," + this.maxStamina;
+                                + this.stamina + "," + this.maxStamina + "," + this.birthDate + "," + this.gameHour;
                 try {
-                        Files.write(Paths.get("savegame.txt"), playerData.getBytes());
+                        Files.write(Paths.get("DAS/src/fr/das/java/saves/savegame.txt"), playerData.getBytes());
                         System.out.println(ConsoleColors.GREEN
                                         + "Partie sauvegardée avec succès ! (savegame.txt)"
                                         + ConsoleColors.RESET);
