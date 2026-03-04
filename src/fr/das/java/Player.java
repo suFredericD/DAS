@@ -1,8 +1,11 @@
 package fr.das.java;
 
 import java.nio.file.*;
+import java.time.*;
 
 public class Player extends Character {
+
+        protected LocalDateTime birthDate;
         protected House home;
 
         // ===================================================================
@@ -15,6 +18,9 @@ public class Player extends Character {
                 super(name, lastName, faction, level, health, maxHealth, thirst, maxThirst, purse, strength, endurance,
                                 agility,
                                 intelligence, charisma, luck, stamina, maxStamina);
+
+                // Génération de la date de naissance du joueur
+                this.birthDate = LocalDateTime.now();
         }
 
         // =====================================================================================
@@ -40,37 +46,6 @@ public class Player extends Character {
                 }
         }
 
-        public void displayStats() {
-                System.out.println(ConsoleColors.YELLOW + "\n Informations du joueur\n--- -- --- -- --- -- ---"
-                                + ConsoleColors.RESET);
-                System.out.println(ConsoleColors.YELLOW + "Nom : " + ConsoleColors.RESET + this.name + " "
-                                + this.lastName);
-                System.out.println(ConsoleColors.YELLOW + "Faction : " + ConsoleColors.RESET + this.faction.getName());
-                System.out.println(ConsoleColors.YELLOW + "Niveau : " + this.level);
-                System.out.println(ConsoleColors.YELLOW + "Santé : " + ConsoleColors.GREEN + this.health
-                                + ConsoleColors.WHITE
-                                + " / " + ConsoleColors.GREEN + this.maxHealth);
-                System.out.println(ConsoleColors.YELLOW + "Soif : " + ConsoleColors.BLUE + this.thirst
-                                + ConsoleColors.WHITE
-                                + " / " + ConsoleColors.BLUE + this.maxThirst);
-                System.out.println(ConsoleColors.YELLOW + "Stamina : " + ConsoleColors.PURPLE + this.stamina
-                                + ConsoleColors.WHITE + " / " + ConsoleColors.PURPLE + this.maxStamina);
-                System.out.println(ConsoleColors.YELLOW + "Argent : " + ConsoleColors.YELLOW + this.purse + " solaris");
-                System.out.println(ConsoleColors.YELLOW + "------------------------");
-                System.out.println(ConsoleColors.YELLOW + "Force : " + ConsoleColors.CYAN + this.strength);
-                System.out.println(ConsoleColors.YELLOW + "Endurance : " + ConsoleColors.CYAN + this.endurance);
-                System.out.println(ConsoleColors.YELLOW + "Agilité : " + ConsoleColors.CYAN + this.agility);
-                System.out.println(ConsoleColors.YELLOW + "Intelligence : " + ConsoleColors.CYAN + this.intelligence);
-                System.out.println(ConsoleColors.YELLOW + "Charisme : " + ConsoleColors.CYAN + this.charisma);
-                System.out.println(ConsoleColors.YELLOW + "Chance : " + ConsoleColors.CYAN + this.luck);
-                System.out.println(ConsoleColors.YELLOW + "------------------------");
-                System.out.println(ConsoleColors.YELLOW + "Attaque : " + ConsoleColors.WHITE + this.attack);
-                System.out.println(ConsoleColors.YELLOW + "Défense : " + ConsoleColors.WHITE + this.defense);
-                System.out.println(
-                                ConsoleColors.YELLOW + "====================================================\n"
-                                                + ConsoleColors.RESET);
-        }
-
         // =====================================================================================
         // =================================================================== GETTERS &
         // SETTERS
@@ -79,7 +54,15 @@ public class Player extends Character {
                 return home;
         }
 
+        public LocalDateTime getBirthDate() {
+                return birthDate;
+        }
+
         public void setHome(House home) {
                 this.home = home;
+        }
+
+        public void setBirthDate(LocalDateTime birthDate) {
+                this.birthDate = birthDate;
         }
 }

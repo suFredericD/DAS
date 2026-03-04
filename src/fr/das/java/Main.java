@@ -27,13 +27,19 @@ public class Main {
                 clearConsole(); // Réinitialisation de la console
                 System.out.println(ConsoleColors.YELLOW + "====================================================");
                 System.out.println("DUNE : ARRAKIS SMUGGLER");
-                System.out.println("====================================================" + ConsoleColors.RESET);
-                System.out.println("Elements creation status\n- - - - - - - - - - - - - -\n"
+                System.out.println("====================================================\n" + ConsoleColors.RESET);
+                System.out.println("Elements creation status\n== == == == == == == == == == ==\n"
                                 + ConsoleColors.YELLOW + "Factions generated    : "
                                 + ConsoleColors.RESET + factions.size() + "\n"
                                 + ConsoleColors.YELLOW + "Locations generated   : "
                                 + ConsoleColors.RESET + locations.size() + "\n"
-                                + "- - - - - - - - - - - - - -" + ConsoleColors.RESET);
+                                + "- - - - - - - - - - - - - -");
+                System.out.println(ConsoleColors.YELLOW + "Player birth date : " + ConsoleColors.RESET
+                                + player.getBirthDate().getYear() + "\n- - - - - - - - - - - - - -");
+                // int currentYear = new GameCalendar().getImperiumGameStartYear();
+                System.out.println(ConsoleColors.YELLOW + "Current year  : " + ConsoleColors.RESET
+                                + new GameCalendar().getImperiumCurrentYear()
+                                + "\n== == == == == == == == == == ==\n");
                 System.out.println("");
 
                 new ScreenWelcome(player, playerHouse);

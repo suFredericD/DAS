@@ -1,6 +1,11 @@
 package fr.das.java;
 
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,7 +46,7 @@ public class ScreenCharacter extends JFrame {
                 centerPanel.setBackground(new Color(0, 0, 0));
                 centerPanel.setLayout(new GridLayout(1, 1));
                 String htmlCharacterDrawLabel = "<html>"
-                                + ""
+                                + "<p>azertyuiopqsdfghjklmwxcvbn+-*/</p>"
                                 + "</html>";
 
                 centerPanel.add(new JLabel(htmlCharacterDrawLabel, SwingConstants.CENTER));
@@ -120,13 +125,21 @@ public class ScreenCharacter extends JFrame {
                 return eastPanel;
         }
 
+        DecimalFormat df = new DecimalFormat("## ###");
+
+        NumberFormat nf = NumberFormat.getInstance(Locale.FRANCE);
+
         public JPanel createNorthPanel(Player player) {
                 String htmlNameLabel = "<html>"
-                                + "<h1 style=' border-color: #5f00ad; border-width: 2px; border-style: solid; color: #5f00ad; font-family: Papyrus; font-size: 24px; text-align: left; margin-left: 10px; margin-right: 10px; padding-top: 5px; padding-left: 10px; padding-right: 10px;'>"
+                                + "<h1 style='color: #5f00ad; font-family: Papyrus; font-size: 28px; text-align: left; margin-left: 10px; margin-right: 10px; padding: 5px 10px 0 10px;'>"
                                 + player.getName() + " " + player.getLastName() + "</h1></html>";
                 String htmlLocationLabel = "<html>"
-                                + "<h2 style='border-color: #944510; border-width: 1px; border-style: solid; color: #944510; font-family: Papyrus; font-size: 14px; text-align: center; margin: 0; padding-left: 10px; padding-right: 10px;'>"
-                                + player.getHome().getLocation().getName() + "</h2></html>";
+                                + "<h2 style='border-color: #944510; border-width: 1px; border-style: solid; color: #944510; font-family: Papyrus; font-size: 14px; text-align: center; margin: 0; padding: 0 10px 0 10px;'>"
+                                + "<span style='padding-right: 10px'>" + player.getHome().getLocation().getName()
+                                + "</span>"
+                                + " - <span style='font-size: 12px;'>"
+                                + nf.format((new GameCalendar().getImperiumCurrentYear()))
+                                + "</span><span style='font-size: 9px;'>AG</span></h2></html>";
 
                 JPanel namePanel = new JPanel();
                 namePanel.setBackground(new Color(0, 0, 0));
