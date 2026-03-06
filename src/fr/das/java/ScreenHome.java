@@ -42,7 +42,7 @@ public class ScreenHome extends JFrame {
                 JPanel centerPanel = new JPanel();
                 centerPanel.setBackground(new Color(0, 0, 0));
                 centerPanel.setLayout(new GridLayout(1, 1));
-                ImageIcon cover = new ImageIcon("DAS/src/fr/das/java/media/pics/arrakeen.png");
+                ImageIcon cover = new ImageIcon("DAS/src/fr/das/java/media/pics/house.png");
                 JLabel coverLabel = new JLabel(cover);
                 coverLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 coverLabel.setVerticalAlignment(SwingConstants.CENTER);

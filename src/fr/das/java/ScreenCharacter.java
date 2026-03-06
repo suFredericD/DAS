@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,7 +17,7 @@ import javax.swing.SwingConstants;
 public class ScreenCharacter extends JFrame {
         public ScreenCharacter(Player player, House playerHouse) {
                 String screenTitle = "Dune : Arrakis Smuggler - Personnage";
-                int frameWidth = 800;
+                int frameWidth = 960;
                 int frameHeight = 960;
                 setTitle(screenTitle);
                 setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -49,7 +50,13 @@ public class ScreenCharacter extends JFrame {
                                 + "<p>azertyuiopqsdfghjklmwxcvbn+-*/</p>"
                                 + "</html>";
 
-                centerPanel.add(new JLabel(htmlCharacterDrawLabel, SwingConstants.CENTER));
+                ImageIcon cover = new ImageIcon("DAS/src/fr/das/java/media/pics/paul02.png");
+                JLabel coverLabel = new JLabel(cover);
+                coverLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                coverLabel.setVerticalAlignment(SwingConstants.CENTER);
+                coverLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+                centerPanel.add(coverLabel);
                 return centerPanel;
         }
 
