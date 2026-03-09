@@ -12,7 +12,7 @@ public class Main {
                 Player player = new Player("Ilric", "Haune", factions.get(3), 1, 100, 100, 100, 100, 100, 20, 20, 20,
                                 20, 20,
                                 10,
-                                100, 100);
+                                100, 100, 500, 1000);
 
                 House playerHouse = new House("Maison du joueur",
                                 "Ta maison personnelle, un refuge sûr et un symbole de ton statut sur Arrakis.",

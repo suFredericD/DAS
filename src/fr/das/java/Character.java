@@ -36,7 +36,7 @@ public abstract class Character {
     public Character(String name, String lastName, Faction faction, int level, int health, int maxHealth, int thirst,
             int maxThirst,
             int purse, int strength, int endurance, int agility, int intelligence, int charisma, int luck,
-            int stamina, int maxStamina) {
+            int stamina, int maxStamina, int jolitre, int jolitreFill) {
         this.name = name;
         this.lastName = lastName;
         this.faction = faction;

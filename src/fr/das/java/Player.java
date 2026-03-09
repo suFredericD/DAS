@@ -15,10 +15,10 @@ public class Player extends Character {
         public Player(String name, String lastName, Faction faction, int level, int health, int maxHealth, int thirst,
                         int maxThirst,
                         int purse, int strength, int endurance, int agility, int intelligence, int charisma, int luck,
-                        int stamina, int maxStamina) {
+                        int stamina, int maxStamina, int jolitre, int jolitreFill) {
                 super(name, lastName, faction, level, health, maxHealth, thirst, maxThirst, purse, strength, endurance,
                                 agility,
-                                intelligence, charisma, luck, stamina, maxStamina);
+                                intelligence, charisma, luck, stamina, maxStamina, jolitre, jolitreFill);
 
                 // Génération de la date de naissance du joueur
                 this.birthDate = LocalDateTime.now();
@@ -33,7 +33,9 @@ public class Player extends Character {
                                 + "," + this.health + "," + this.maxHealth + "," + this.thirst + "," + this.maxThirst
                                 + "," + this.purse + "," + this.strength + "," + this.endurance + "," + this.agility
                                 + "," + this.intelligence + "," + this.charisma + "," + this.luck + ","
-                                + this.stamina + "," + this.maxStamina + "," + this.birthDate + "," + this.gameHour;
+                                + this.stamina + "," + this.maxStamina + "," + this.birthDate + "," + this.gameHour
+                                + ","
+                                + this.jolitreFill + "," + this.jolitre;
                 try {
                         Files.write(Paths.get("DAS/src/fr/das/java/saves/savegame.txt"), playerData.getBytes());
                         System.out.println(ConsoleColors.GREEN

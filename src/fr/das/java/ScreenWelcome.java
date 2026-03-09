@@ -48,7 +48,6 @@ public class ScreenWelcome extends JFrame {
             characterButton.setFont(new Font("Papyrus", Font.BOLD, 16));
             characterButton.setBackground(new Color(148, 69, 16));
             characterButton.setPreferredSize(new Dimension(0, 50));
-            characterButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
             characterButton.setFocusPainted(false);
             characterButton.setOpaque(true);
             characterButton.addActionListener(e -> {
@@ -60,11 +59,21 @@ public class ScreenWelcome extends JFrame {
             homeButton.setFont(new Font("Papyrus", Font.BOLD, 16));
             homeButton.setBackground(new Color(148, 69, 16));
             homeButton.setPreferredSize(new Dimension(0, 50));
-            homeButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
             homeButton.setFocusPainted(false);
             homeButton.setOpaque(true);
             homeButton.addActionListener(e -> {
                   new ScreenHome(player, playerHouse);
+                  dispose();
+            });
+
+            JButton activitiesButton = new JButton("Activités");
+            activitiesButton.setFont(new Font("Papyrus", Font.BOLD, 16));
+            activitiesButton.setBackground(new Color(148, 69, 16));
+            activitiesButton.setPreferredSize(new Dimension(0, 50));
+            activitiesButton.setFocusPainted(false);
+            activitiesButton.setOpaque(true);
+            activitiesButton.addActionListener(e -> {
+                  new ScreenSelectActionType(player, playerHouse);
                   dispose();
             });
 
@@ -73,6 +82,7 @@ public class ScreenWelcome extends JFrame {
             buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 120, 40, 120));
             buttonPanel.add(characterButton);
             buttonPanel.add(homeButton);
+            buttonPanel.add(activitiesButton);
 
             JPanel welcomePanel = (JPanel) this.getContentPane();
             welcomePanel.setBackground(new Color(0, 0, 0));

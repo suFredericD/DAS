@@ -1,11 +1,8 @@
 package fr.das.java;
 
 import java.awt.*;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Calendar;
 import java.util.Locale;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -46,16 +43,11 @@ public class ScreenCharacter extends JFrame {
                 JPanel centerPanel = new JPanel();
                 centerPanel.setBackground(new Color(0, 0, 0));
                 centerPanel.setLayout(new GridLayout(1, 1));
-                String htmlCharacterDrawLabel = "<html>"
-                                + "<p>azertyuiopqsdfghjklmwxcvbn+-*/</p>"
-                                + "</html>";
-
                 ImageIcon cover = new ImageIcon("DAS/src/fr/das/java/media/pics/paul02.png");
                 JLabel coverLabel = new JLabel(cover);
                 coverLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 coverLabel.setVerticalAlignment(SwingConstants.CENTER);
                 coverLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
                 centerPanel.add(coverLabel);
                 return centerPanel;
         }
@@ -81,13 +73,24 @@ public class ScreenCharacter extends JFrame {
                         new ScreenHome(player, playerHouse);
                         dispose();
                 });
-
+                JButton activitiesButton = new JButton("Activités");
+                activitiesButton.setFont(new Font("Papyrus", Font.BOLD, 16));
+                activitiesButton.setBackground(new Color(148, 69, 16));
+                activitiesButton.setPreferredSize(new Dimension(0, 50));
+                activitiesButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+                activitiesButton.setFocusPainted(false);
+                activitiesButton.setOpaque(true);
+                activitiesButton.addActionListener(e -> {
+                        new ScreenSelectActionType(player, playerHouse);
+                        dispose();
+                });
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setBackground(new Color(0, 0, 0));
                 buttonPanel.setLayout(new GridLayout(1, 2, 20, 0));
                 buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
                 buttonPanel.add(welcomeButton);
                 buttonPanel.add(homeButton);
+                buttonPanel.add(activitiesButton);
                 return buttonPanel;
         }
 
@@ -152,13 +155,13 @@ public class ScreenCharacter extends JFrame {
                                 + "<tr><td colspan ='2' style='font-family: Papyrus; font-size: 12px;color: #944510; text-align: center;'>"
                                 + gameHourLabel + "</tr></table></html>";
 
-                JPanel namePanel = new JPanel();
-                namePanel.setBackground(new Color(0, 0, 0));
-                namePanel.setLayout(new GridLayout(1, 1));
-                namePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-                namePanel.add(new JLabel(htmlNameLabel, SwingConstants.CENTER));
-                namePanel.add(new JLabel(htmlLocationLabel, SwingConstants.CENTER));
-                return namePanel;
+                JPanel northPanel = new JPanel();
+                northPanel.setBackground(new Color(0, 0, 0));
+                northPanel.setLayout(new GridLayout(1, 1));
+                northPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+                northPanel.add(new JLabel(htmlNameLabel, SwingConstants.CENTER));
+                northPanel.add(new JLabel(htmlLocationLabel, SwingConstants.CENTER));
+                return northPanel;
         }
 
         public JPanel createWestPanel(Player player) {
@@ -194,7 +197,7 @@ public class ScreenCharacter extends JFrame {
                                 + "</td></tr></table></html>";
                 String htmlStaminaLabel = "<html><table style='margin: 0; padding: 5px; border-color: #944510; border-width: 1px; border-style: solid;'>"
                                 +
-                                "<tr><td style='color: #0e941a; font-family: Papyrus; font-size: 12px; text-align: center; margin: 0; padding: 5px; '>Endurance</td></tr><tr>"
+                                "<tr><td style='color: #0e941a; font-family: Papyrus; font-size: 12px; text-align: center; margin: 0; padding: 5px; '>Energie</td></tr><tr>"
                                 +
                                 "<td style='color: #944510; font-family: Consolas; font-size: 12px; text-align: center; margin: 0; padding: 5px; '>"
                                 + player.getStamina() + " / " + player.getMaxStamina()
@@ -207,8 +210,8 @@ public class ScreenCharacter extends JFrame {
 
                 levelsPanel.add(new JLabel(htmlLevelsLabel, SwingConstants.CENTER));
                 levelsPanel.add(new JLabel(htmlHealthLabel, SwingConstants.CENTER));
-                levelsPanel.add(new JLabel(htmlThirstLabel, SwingConstants.CENTER));
                 levelsPanel.add(new JLabel(htmlStaminaLabel, SwingConstants.CENTER));
+                levelsPanel.add(new JLabel(htmlThirstLabel, SwingConstants.CENTER));
 
                 return levelsPanel;
         }
