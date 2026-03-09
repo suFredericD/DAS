@@ -34,8 +34,7 @@ public class Player extends Character {
                                 + "," + this.purse + "," + this.strength + "," + this.endurance + "," + this.agility
                                 + "," + this.intelligence + "," + this.charisma + "," + this.luck + ","
                                 + this.stamina + "," + this.maxStamina + "," + this.birthDate + "," + this.gameHour
-                                + ","
-                                + this.jolitreFill + "," + this.jolitre;
+                                + "," + this.jolitreFill + "," + this.jolitre;
                 try {
                         Files.write(Paths.get("DAS/src/fr/das/java/saves/savegame.txt"), playerData.getBytes());
                         System.out.println(ConsoleColors.GREEN
