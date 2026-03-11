@@ -9,7 +9,7 @@ public class Player extends Character {
         protected LocalDateTime birthDate;
         protected House home;
 
-        // ===================================================================
+        // ==================================================================================
         // CONSTRUCTEUR
         // ==================================================================================
         public Player(String name, String lastName, Faction faction, int level, int health, int maxHealth, int thirst,
@@ -28,13 +28,30 @@ public class Player extends Character {
         // =====================================================================================
         // =================================================================== FUNCTIONS
         // =====================================================================================
-        public void saveGame() {
-                String playerData = this.name + "," + this.lastName + "," + this.faction.getName() + "," + this.level
-                                + "," + this.health + "," + this.maxHealth + "," + this.thirst + "," + this.maxThirst
-                                + "," + this.purse + "," + this.strength + "," + this.endurance + "," + this.agility
-                                + "," + this.intelligence + "," + this.charisma + "," + this.luck + ","
-                                + this.stamina + "," + this.maxStamina + "," + this.birthDate + "," + this.gameHour
-                                + "," + this.jolitreFill + "," + this.jolitre;
+        public void saveGame(House playerHouse) {
+                String playerData = this.name + ","
+                                + this.lastName + ","
+                                + this.faction.getName() + ","
+                                + this.level + ","
+                                + this.health + ","
+                                + this.maxHealth + ","
+                                + this.thirst + ","
+                                + this.maxThirst + ","
+                                + this.purse + ","
+                                + this.strength + ","
+                                + this.endurance + ","
+                                + this.agility + ","
+                                + this.intelligence + ","
+                                + this.charisma + ","
+                                + this.luck + ","
+                                + this.stamina + ","
+                                + this.maxStamina + ","
+                                + this.birthDate + ","
+                                + this.gameHour + ","
+                                + this.jolitreFill + ","
+                                + this.jolitre + ","
+                                + playerHouse.getTankFill() + ","
+                                + playerHouse.getVault();
                 try {
                         Files.write(Paths.get("DAS/src/fr/das/java/saves/savegame.txt"), playerData.getBytes());
                         System.out.println(ConsoleColors.GREEN

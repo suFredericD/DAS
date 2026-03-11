@@ -48,7 +48,7 @@ public class Main {
 
                 // Fin d'affichage console : message de fermeture systématique
                 Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                        player.saveGame();
+                        player.saveGame(playerHouse);
                         System.out.println(
                                         ConsoleColors.YELLOW + "_____________________________________ fin d'éxécution\n"
                                                         + ConsoleColors.RESET);
